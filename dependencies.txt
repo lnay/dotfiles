@@ -1,0 +1,5 @@
+nvim
+zsh
+bash
+dein nvim plugin manager
+texlive and tlmgr patch
