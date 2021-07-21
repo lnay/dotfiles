@@ -15,6 +15,8 @@ call dein#add('lervag/vimtex')
 call dein#add('morhetz/gruvbox')
 call dein#add('tomasiser/vim-code-dark')
 call dein#add('tomasr/molokai')
+call dein#add('embark-theme/vim')
+call dein#add('mhartington/oceanic-next')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
@@ -53,7 +55,11 @@ set mouse=a
 set tabstop=4
 set shiftwidth=4
 
-colorscheme slate
+if (has("termguicolors"))
+ set termguicolors
+endif
+colorscheme OceanicNext
+set guifont=FiraMono
 let g:airline_powerline_fonts = 1
 set listchars=trail:~,extends:>,precedes:<,lead:·
 set list
