@@ -11,27 +11,23 @@ call dein#begin('/home/luke/.cache/dein')
 call dein#add('/home/luke/.cache/dein/repos/github.com/Shougo/dein.vim')
 
 " Add or remove your plugins here like this:
+call dein#add('nvim-treesitter/nvim-treesitter')
+call dein#add('neovim/nvim-lspconfig')
 call dein#add('lervag/vimtex')
-call dein#add('morhetz/gruvbox')
-call dein#add('tomasiser/vim-code-dark')
-call dein#add('tomasr/molokai')
-call dein#add('embark-theme/vim')
 call dein#add('mhartington/oceanic-next')
-call dein#add('airblade/vim-gitgutter')
+call dein#add('nvim-lua/plenary.nvim')
+call dein#add('lewis6991/gitsigns.nvim')
+call dein#add('lukas-reineke/indent-blankline.nvim')
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
-call dein#add('tpope/vim-surround')
+" call dein#add('tpope/vim-surround')
 call dein#add('tpope/vim-fugitive')
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('Shougo/neosnippet-snippets')
-call dein#add('nvim-treesitter/nvim-treesitter')
 
 " Required:
 call dein#end()
 
 " Required:
 filetype plugin indent on
-syntax enable
 
 " If you want to install not installed plugins on startup.
 "if dein#check_install()
@@ -80,6 +76,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
+  buf_set_keymap("i", "<C-n>", "<cmd>lua vim.lsp.omnifunc()<CR>", opts)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -93,6 +90,8 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+require('gitsigns').setup()
 EOF
 
 set number
@@ -100,28 +99,32 @@ set relativenumber
 set mouse=a
 set tabstop=4
 set shiftwidth=4
+set noexpandtab
 
 if (has("termguicolors"))
  set termguicolors
 endif
 colorscheme OceanicNext
-set guifont=FiraMono
-let g:airline_powerline_fonts = 1
-set listchars=trail:~,extends:>,precedes:<,lead:·
+set guifont=FiraMono:h11
+let g:airline_powerline_fonts = 1 " needed for vim airline
+set listchars=tab:\ \ ,trail:~,extends:>,precedes:<,lead:·
 set list
 highlight Folded ctermbg=Black
 highlight Conceal ctermbg=Black
-highlight SignColumn ctermbg=None
-highlight GitGutterAdd ctermbg=None ctermfg=Green
-highlight GitGutterChange ctermbg=None ctermfg=Yellow
-highlight GitGutterDelete ctermbg=None ctermfg=Red
 highlight Comment cterm=italic gui=italic
 
-autocmd Filetype tex  setlocal makeprg=latexmk
+let g:indent_blankline_enabled = v:false
+let g:indent_blankline_space_char = '·'
+let g:indent_blankline_char='┆'
+let g:indent_blankline_show_trailing_blankline_indent = v:false
+let g:indent_blankline_use_treesitter = v:true
+let g:indent_blankline_show_current_context = v:true
+
+autocmd Filetype tex  setlocal makeprg=latexmk   
 autocmd Filetype tex  setlocal shiftwidth=2
 autocmd Filetype tex  setlocal tabstop=2
 autocmd Filetype tex  setlocal expandtab
-autocmd Filetype tex  setlocal conceallevel=2
+autocmd Filetype tex  setlocal textwidth=100
 autocmd Filetype tex  setlocal foldmethod=expr
 autocmd Filetype tex  setlocal foldexpr=nvim_treesitter#foldexpr()
 autocmd Filetype tex  setlocal foldlevel=2
