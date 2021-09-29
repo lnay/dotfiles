@@ -64,6 +64,8 @@ source $ZSH/oh-my-zsh.sh
 # Luke's additions:
 bindkey -v
 alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode' # tlmgr.pl also needs patching
+PATH="/home/luke/.cargo/bin:$PATH"
+source /usr/share/nvm/init-nvm.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
