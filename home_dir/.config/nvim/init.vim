@@ -21,7 +21,7 @@ call dein#add('lewis6991/gitsigns.nvim')
 call dein#add('lukas-reineke/indent-blankline.nvim')
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
-" call dein#add('tpope/vim-surround')
+call dein#add('tpope/vim-surround')
 call dein#add('tpope/vim-fugitive')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
@@ -33,7 +33,16 @@ call dein#end()
 filetype plugin indent on
 
 " PLUGIN CONFIGS
-set g:vimtex_complete_enabled=0
+let g:indent_blankline_enabled = v:false
+let g:indent_blankline_space_char = '·'
+let g:indent_blankline_char='┆'
+let g:indent_blankline_show_trailing_blankline_indent = v:false
+let g:indent_blankline_use_treesitter = v:true
+let g:indent_blankline_show_current_context = v:true
+
+let g:tex_flavor = 'latex'
+let g:vimtex_complete_enabled=0
+let g:airline_powerline_fonts = 1 " needed for vim airline
 lua <<EOF
 require('gitsigns').setup()
 EOF
@@ -117,19 +126,11 @@ if (has("termguicolors"))
 endif
 colorscheme OceanicNext
 set guifont=FiraMono:h11
-let g:airline_powerline_fonts = 1 " needed for vim airline
 set listchars=tab:\ \ ,trail:~,extends:>,precedes:<,lead:·
 set list
 highlight Folded ctermbg=Black
 highlight Conceal ctermbg=Black
 highlight Comment cterm=italic gui=italic
-
-let g:indent_blankline_enabled = v:false
-let g:indent_blankline_space_char = '·'
-let g:indent_blankline_char='┆'
-let g:indent_blankline_show_trailing_blankline_indent = v:false
-let g:indent_blankline_use_treesitter = v:true
-let g:indent_blankline_show_current_context = v:true
 
 autocmd Filetype tex  setlocal makeprg=latexmk
 autocmd Filetype tex  setlocal shiftwidth=2
