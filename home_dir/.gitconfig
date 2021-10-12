@@ -1,0 +1,17 @@
+[user]
+	email = luke.naylr@gmail.com
+	name = Luke Naylor
+[init]
+	defaultBranch = main
+[difftool]
+	prompt = true
+[diff]
+	tool = nvimdiff
+[difftool "nvimdiff"]
+	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[core]
+	editor = nvim
+[includeIf "gitdir:~/Documents/repos/lnay/"]
+	path = ~/Documents/repos/lnay/.gitconfig
+[includeIf "gitdir:~/Documents/repos/s1511002-gitlab/"]
+	path = ~/Documents/repos/s1511002-gitlab/.gitconfig
