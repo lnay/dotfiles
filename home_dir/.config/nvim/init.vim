@@ -32,7 +32,16 @@ call dein#end()
 " Required:
 filetype plugin indent on
 
+" PLUGIN CONFIGS
+set g:vimtex_complete_enabled=0
+lua <<EOF
+require('gitsigns').setup()
+EOF
+
 "End dein Scripts-------------------------
+
+" TREESITTER CONFIGS
+" ========== =======
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -40,7 +49,12 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   },
 }
+EOF
 
+" LSP CONFIGS
+" === =======
+
+lua<<EOF
 local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
@@ -89,8 +103,6 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
-
-require('gitsigns').setup()
 EOF
 
 set number
@@ -119,7 +131,7 @@ let g:indent_blankline_show_trailing_blankline_indent = v:false
 let g:indent_blankline_use_treesitter = v:true
 let g:indent_blankline_show_current_context = v:true
 
-autocmd Filetype tex  setlocal makeprg=latexmk   
+autocmd Filetype tex  setlocal makeprg=latexmk
 autocmd Filetype tex  setlocal shiftwidth=2
 autocmd Filetype tex  setlocal tabstop=2
 autocmd Filetype tex  setlocal expandtab
