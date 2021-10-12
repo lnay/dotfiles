@@ -14,14 +14,17 @@ call dein#add('/home/luke/.cache/dein/repos/github.com/Shougo/dein.vim')
 call dein#add('nvim-treesitter/nvim-treesitter')
 call dein#add('neovim/nvim-lspconfig')
 call dein#add('lervag/vimtex')
+call dein#add('mattn/emmet-vim')
 call dein#add('mhartington/oceanic-next')
-call dein#add('nvim-lua/plenary.nvim')
+call dein#add('nvim-lua/plenary.nvim') "some sort of lua library
 call dein#add('lewis6991/gitsigns.nvim')
 call dein#add('lukas-reineke/indent-blankline.nvim')
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 " call dein#add('tpope/vim-surround')
 call dein#add('tpope/vim-fugitive')
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
 
 " Required:
 call dein#end()
@@ -58,6 +61,7 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('i', '<C-n>', '<Cmd>lua vim.lsp.omnifunc()<CR>', opts)
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
@@ -81,7 +85,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = {"texlab"}
+local servers = {"texlab","denols","cssls"}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
