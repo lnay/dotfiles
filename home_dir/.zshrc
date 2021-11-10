@@ -71,3 +71,6 @@ source /usr/share/nvm/init-nvm.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # for cargo binaries
 PATH=$PATH:~/.cargo/bin
+# for denols
+export DENO_INSTALL="/home/luke/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
