@@ -27,6 +27,7 @@ call dein#add('hrsh7th/nvim-cmp')
 call dein#add('hrsh7th/cmp-nvim-lsp')
 call dein#add('saadparwaiz1/cmp_luasnip')
 call dein#add('L3MON4D3/LuaSnip')
+call dein#add('rafamadriz/friendly-snippets')
 
 " Required:
 call dein#end()
@@ -123,6 +124,7 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- luasnip setup
 local luasnip = require 'luasnip'
+require("luasnip/loaders/from_vscode").load() -- required to load the snippets from "friendly-snippets" plugin
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
