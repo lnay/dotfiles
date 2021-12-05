@@ -177,6 +177,7 @@ set mouse=a
 set tabstop=4
 set shiftwidth=4
 set noexpandtab
+set inccommand=nosplit
 
 if (has("termguicolors"))
  set termguicolors
