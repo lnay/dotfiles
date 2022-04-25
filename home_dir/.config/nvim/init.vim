@@ -29,6 +29,8 @@ call dein#add('saadparwaiz1/cmp_luasnip')
 call dein#add('L3MON4D3/LuaSnip')
 call dein#add('rafamadriz/friendly-snippets')
 
+call dein#add('mfussenegger/nvim-dap')
+call dein#add('Pocco81/DAPInstall.nvim')
 " Required:
 call dein#end()
 
@@ -169,7 +171,30 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+-- dapinstall setup
+dap_install = require("dap-install")
+
+dap_install.setup({
+	installation_path = vim.fn.stdpath("data") .. "/dapinstall/",
+})
+
+dap_install.config("python", {})
+vim.fn.sign_define('DapBreakpoint', {text='🔴', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointCondition', {text='❓', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointRejected', {text='❗', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapStopped', {text='⏸', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapLogPoint', {text='✏️', texthl='', linehl='', numhl=''})
 EOF
+nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
+nnoremap <silent> <F10> :lua require'dap'.step_over()<CR>
+nnoremap <silent> <F11> :lua require'dap'.step_into()<CR>
+nnoremap <silent> <F12> :lua require'dap'.step_out()<CR>
+nnoremap <silent> <leader>b :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <leader>B :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
+nnoremap <silent> <leader>lp :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
+nnoremap <silent> <leader>dr :lua require'dap'.repl.open()<CR>
+nnoremap <silent> <leader>dl :lua require'dap'.run_last()<CR>
 
 set number
 set relativenumber
