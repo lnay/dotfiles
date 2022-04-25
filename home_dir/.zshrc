@@ -74,3 +74,5 @@ PATH=$PATH:~/.cargo/bin
 # for denols
 export DENO_INSTALL="/home/luke/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+
+alias miktexmk='podman run -v $(pwd):/root/ docker.io/miktex/miktex:latest sh -c "cd /root/;latexmk;"'
