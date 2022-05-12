@@ -24,6 +24,7 @@ call dein#add('tpope/vim-surround')
 call dein#add('tpope/vim-fugitive')
 call dein#add('hrsh7th/nvim-cmp')
 call dein#add('hrsh7th/cmp-nvim-lsp')
+call dein#add('hrsh7th/cmp-path')
 call dein#add('saadparwaiz1/cmp_luasnip')
 call dein#add('L3MON4D3/LuaSnip')
 call dein#add('rafamadriz/friendly-snippets')
@@ -161,6 +162,7 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'path' },
   },
 }
 
