@@ -19,8 +19,7 @@ call dein#add('mhartington/oceanic-next')
 call dein#add('nvim-lua/plenary.nvim') "some sort of lua library
 call dein#add('lewis6991/gitsigns.nvim')
 call dein#add('lukas-reineke/indent-blankline.nvim')
-call dein#add('vim-airline/vim-airline')
-call dein#add('vim-airline/vim-airline-themes')
+call dein#add('nvim-lualine/lualine.nvim')
 call dein#add('tpope/vim-surround')
 call dein#add('tpope/vim-fugitive')
 call dein#add('hrsh7th/nvim-cmp')
@@ -47,9 +46,11 @@ let g:indent_blankline_show_current_context = v:true
 
 let g:tex_flavor = 'latex'
 let g:vimtex_complete_enabled=0
-let g:airline_powerline_fonts = 1 " needed for vim airline
 lua <<EOF
 require('gitsigns').setup()
+require('lualine').setup {
+	options = { theme = 'papercolor_dark'}
+}
 EOF
 
 "End dein Scripts-------------------------
