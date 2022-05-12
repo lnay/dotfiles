@@ -29,7 +29,7 @@ call dein#add('L3MON4D3/LuaSnip')
 call dein#add('rafamadriz/friendly-snippets')
 
 call dein#add('mfussenegger/nvim-dap')
-call dein#add('Pocco81/DAPInstall.nvim')
+call dein#add('Pocco81/DAPInstall.nvim', {'rev' : '24923c3819'})
 " Required:
 call dein#end()
 
