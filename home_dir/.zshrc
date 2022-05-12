@@ -76,3 +76,4 @@ export DENO_INSTALL="/home/luke/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 alias miktexmk='podman run -v $(pwd):/root/ docker.io/miktex/miktex:latest sh -c "cd /root/;latexmk;"'
+export PATH="/home/luke/.local/bin:$PATH"
