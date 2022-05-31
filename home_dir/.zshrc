@@ -75,5 +75,6 @@ PATH=$PATH:~/.cargo/bin
 export DENO_INSTALL="/home/luke/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
-alias miktexmk='podman run -v $(pwd):/root/ docker.io/miktex/miktex:latest sh -c "cd /root/;latexmk;"'
 export PATH="/home/luke/.local/bin:$PATH"
+alias miktexmk='podman run -v $(pwd):/root/ docker.io/miktex/miktex:latest sh -c "cd /root/;latexmk;"'
+which ghc &> /dev/null || alias ghc=ghc-podman # ghc-podman located in ~/.local/bin

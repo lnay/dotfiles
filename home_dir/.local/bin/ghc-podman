@@ -1,0 +1,2 @@
+#!/bin/sh
+podman run -v `pwd`:/root/ -it --rm docker.io/library/haskell:9 /bin/bash -c "cd /root; ghc $*;"
