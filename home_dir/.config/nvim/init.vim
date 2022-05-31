@@ -64,6 +64,15 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
   },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
 }
 EOF
 
@@ -197,6 +206,7 @@ set tabstop=4
 set shiftwidth=4
 set noexpandtab
 set inccommand=nosplit
+set laststatus=3
 
 if (has("termguicolors"))
  set termguicolors
