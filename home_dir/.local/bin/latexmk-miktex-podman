@@ -1,0 +1,2 @@
+#!/bin/sh
+podman run -v $(pwd):/root/ --rm docker.io/miktex/miktex:latest sh -c "cd /root/;latexmk $*;"
