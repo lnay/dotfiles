@@ -11,7 +11,7 @@
 	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [core]
 	editor = nvim
-[includeIf "gitdir:~/Documents/repos/lnay/"]
-	path = ~/Documents/repos/lnay/.gitconfig
-[includeIf "gitdir:~/Documents/repos/s1511002-gitlab/"]
-	path = ~/Documents/repos/s1511002-gitlab/.gitconfig
+[includeIf "gitdir:~/Documents/repos/lnay_github/"]
+	path = ~/Documents/repos/lnay_github/.gitconfig
+[includeIf "gitdir:~/Documents/repos/s1511002_gitlab/"]
+	path = ~/Documents/repos/s1511002_gitlab/.gitconfig
