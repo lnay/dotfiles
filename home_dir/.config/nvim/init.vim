@@ -222,7 +222,7 @@ highlight Comment cterm=italic gui=italic
 autocmd Filetype tex  setlocal makeprg=latexmk
 autocmd Filetype tex  setlocal shiftwidth=2
 autocmd Filetype tex  setlocal tabstop=2
-autocmd Filetype tex  setlocal expandtab
+autocmd Filetype tex  setlocal noexpandtab
 autocmd Filetype tex  setlocal textwidth=100
 autocmd Filetype tex  setlocal foldmethod=expr
 autocmd Filetype tex  setlocal foldexpr=nvim_treesitter#foldexpr()
